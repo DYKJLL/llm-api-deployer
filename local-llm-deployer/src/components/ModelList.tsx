@@ -53,7 +53,7 @@ export default function ModelList() {
           onChange={(e) => setFilter(e.target.value as typeof filter)}
           className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-800 dark:text-white"
         >
-          <option value="all">All Models</option>
+          <option value="all">{t('models.all')}</option>
           <option value="downloaded">{t('models.downloaded')}</option>
           <option value="running">{t('models.running')}</option>
         </select>
@@ -155,7 +155,7 @@ export default function ModelList() {
 
       {filteredModels.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-500 dark:text-gray-400">No models found</p>
+          <p className="text-gray-500 dark:text-gray-400">{t('models.noModels')}</p>
         </div>
       )}
     </div>

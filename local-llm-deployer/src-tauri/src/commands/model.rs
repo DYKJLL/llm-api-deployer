@@ -42,7 +42,7 @@ fn get_known_models() -> Vec<ModelInfo> {
             quantization: "Q4_0".to_string(),
             parameters: 8_000_000_000,
             vram_required_bytes: 8_000_000_000,
-            description: "Meta's latest open source model, 8B parameters".to_string(),
+            description: "Meta 最新开源模型，80亿参数".to_string(),
             download_url: "https://ollama.ai/library/llama3".to_string(),
             last_used: None,
             is_downloaded: false,
@@ -56,7 +56,7 @@ fn get_known_models() -> Vec<ModelInfo> {
             quantization: "Q4_0".to_string(),
             parameters: 70_000_000_000,
             vram_required_bytes: 40_000_000_000,
-            description: "Meta's latest open source model, 70B parameters".to_string(),
+            description: "Meta 最新开源模型，700亿参数".to_string(),
             download_url: "https://ollama.ai/library/llama3".to_string(),
             last_used: None,
             is_downloaded: false,
@@ -70,7 +70,7 @@ fn get_known_models() -> Vec<ModelInfo> {
             quantization: "Q4_0".to_string(),
             parameters: 7_000_000_000,
             vram_required_bytes: 6_000_000_000,
-            description: "Alibaba's latest Qwen model, 7B parameters".to_string(),
+            description: "阿里巴巴通义千问最新模型，70亿参数".to_string(),
             download_url: "https://ollama.ai/library/qwen2.5".to_string(),
             last_used: None,
             is_downloaded: false,
@@ -84,7 +84,7 @@ fn get_known_models() -> Vec<ModelInfo> {
             quantization: "Q4_0".to_string(),
             parameters: 14_000_000_000,
             vram_required_bytes: 12_000_000_000,
-            description: "Alibaba's latest Qwen model, 14B parameters".to_string(),
+            description: "阿里巴巴通义千问最新模型，140亿参数".to_string(),
             download_url: "https://ollama.ai/library/qwen2.5".to_string(),
             last_used: None,
             is_downloaded: false,
@@ -98,7 +98,7 @@ fn get_known_models() -> Vec<ModelInfo> {
             quantization: "Q4_0".to_string(),
             parameters: 3_800_000_000,
             vram_required_bytes: 4_000_000_000,
-            description: "Microsoft's Phi-3 model, small but capable".to_string(),
+            description: "微软 Phi-3 模型，小而强大".to_string(),
             download_url: "https://ollama.ai/library/phi3".to_string(),
             last_used: None,
             is_downloaded: false,
@@ -112,7 +112,7 @@ fn get_known_models() -> Vec<ModelInfo> {
             quantization: "Q4_0".to_string(),
             parameters: 7_000_000_000,
             vram_required_bytes: 6_000_000_000,
-            description: "Mistral AI's 7B model".to_string(),
+            description: "Mistral AI 出品的7B模型".to_string(),
             download_url: "https://ollama.ai/library/mistral".to_string(),
             last_used: None,
             is_downloaded: false,
@@ -126,7 +126,7 @@ fn get_known_models() -> Vec<ModelInfo> {
             quantization: "Q4_0".to_string(),
             parameters: 7_000_000_000,
             vram_required_bytes: 6_000_000_000,
-            description: "Meta's code-specialized Llama model".to_string(),
+            description: "Meta 专用代码模型".to_string(),
             download_url: "https://ollama.ai/library/codellama".to_string(),
             last_used: None,
             is_downloaded: false,
@@ -140,7 +140,7 @@ fn get_known_models() -> Vec<ModelInfo> {
             quantization: "Q4_0".to_string(),
             parameters: 9_000_000_000,
             vram_required_bytes: 8_000_000_000,
-            description: "Google's Gemma 2 model, 9B parameters".to_string(),
+            description: "谷歌 Gemma 2 模型，90亿参数".to_string(),
             download_url: "https://ollama.ai/library/gemma2".to_string(),
             last_used: None,
             is_downloaded: false,
@@ -157,6 +157,10 @@ pub async fn get_recommendations() -> Result<Vec<ModelRecommendation>, String> {
 
 #[command]
 pub async fn download_model(model_id: String) -> Result<(), String> {
+    if !crate::commands::ollama::is_ollama_installed() {
+        return Err("请先安装 Ollama 才能下载模型".to_string());
+    }
+    
     let output = Command::new("ollama")
         .arg("pull")
         .arg(&model_id)

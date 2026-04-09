@@ -148,7 +148,7 @@ export default function Dashboard() {
                       ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
                       : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
                   }`}>
-                    {rec.canRun ? 'Recommended' : 'May have limitations'}
+                    {rec.canRun ? '推荐' : '可能有限制'}
                   </span>
                 </div>
                 {rec.warnings.length > 0 && (

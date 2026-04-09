@@ -32,6 +32,7 @@ export default {
   models: {
     title: '模型库',
     search: '搜索模型...',
+    all: '全部模型',
     downloaded: '已下载',
     notDownloaded: '未下载',
     running: '运行中',
@@ -44,6 +45,7 @@ export default {
     parameters: '参数量',
     size: '大小',
     vramRequired: '所需显存',
+    noModels: '暂无模型',
   },
   settings: {
     title: '设置',

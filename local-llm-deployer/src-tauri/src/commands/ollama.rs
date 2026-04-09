@@ -25,6 +25,14 @@ pub fn get_ollama_version() -> Result<String, String> {
     Ok(version)
 }
 
+pub fn is_ollama_installed() -> bool {
+    Command::new("ollama")
+        .arg("--version")
+        .output()
+        .map(|output| output.status.success())
+        .unwrap_or(false)
+}
+
 pub async fn list_local_models() -> Result<Vec<ModelInfo>, String> {
     let output = Command::new("ollama")
         .arg("list")

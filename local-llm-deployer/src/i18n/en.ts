@@ -32,6 +32,7 @@ export default {
   models: {
     title: 'Model Library',
     search: 'Search models...',
+    all: 'All Models',
     downloaded: 'Downloaded',
     notDownloaded: 'Not Downloaded',
     running: 'Running',
@@ -44,6 +45,7 @@ export default {
     parameters: 'Parameters',
     size: 'Size',
     vramRequired: 'VRAM Required',
+    noModels: 'No models found',
   },
   settings: {
     title: 'Settings',
